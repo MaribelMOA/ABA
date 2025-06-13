@@ -29,9 +29,9 @@ class ObjectCountingSeeder extends Seeder
             foreach ($slice as $type) {
                 ObjectCounting::create([
                     'general_id'   => $general->id,
-                    'alarm_type_id' => fake()->randomElement($alarmTypeIds),
+                    'alarm_type_id' => $alarmTypeIds[array_rand($alarmTypeIds)],
                     'object_type'  => $type,
-                    'object_state' => fake()->randomElement(['enter', 'leave','exist']),
+                    'object_state' => ['enter', 'leave', 'exist'][array_rand(['enter', 'leave', 'exist'])],
                     'count'        => rand(1, 20),
                 ]);
             }

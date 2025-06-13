@@ -25,8 +25,8 @@ class AvdSeeder extends Seeder
                 Avd::create([
                     'alarm_id'     => $alarm->id,
                     'id_event' => rand(1000, 9999),
-                    'status' => fake()->randomElement(['active', 'resolved', 'ignored']),
-                    'alarm_type' => fake()->randomElement(['AVD', 'Avd']),
+                    'status' => ['active', 'resolved', 'ignored'][array_rand(['active', 'resolved', 'ignored'])],
+                    'alarm_type' => ['AVD', 'Avd'][array_rand(['AVD', 'Avd'])],
                     'created_at' => Carbon::now()->subMinutes(rand(0, 1000)),
                     'updated_at' => Carbon::now(),
                 ]);

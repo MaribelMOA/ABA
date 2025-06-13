@@ -27,7 +27,7 @@ class GeneralSeeder extends Seeder
                 General::create([
                     'alarm_id'    => $alarm->id,
                     'id_event'    => rand(1000, 9999),
-                    'status'      => fake()->randomElement(['open', 'closed']),
+                    'status' => ['open', 'closed'][array_rand(['open', 'closed'])],
                     'image'           => 'vsd_' . $alarm->id . '.jpg',
 
                 ]);

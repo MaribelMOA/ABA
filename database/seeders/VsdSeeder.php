@@ -24,7 +24,7 @@ class VsdSeeder extends Seeder
                     'alarm_id'        => $alarm->id,
                     'id_event'        => rand(1000, 9999),
                     'id_target'       => rand(1, 50),
-                    'target_type_id'  => fake()->randomElement($targetTypeIds),
+                    'target_type_id'  => $targetTypeIds[array_rand($targetTypeIds)],
                     'image'           => 'vsd_' . $alarm->id . '.jpg',
                 ]);
             }
