@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Services\DevicesServices;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
@@ -28,13 +29,13 @@ class DatabaseSeeder extends Seeder
 //            'email' => 'test@example.com',
 //        ]);
 
-        $user=User::factory()->create([
+        $user=User::create([
             'name' => 'admin',
             'email' => 'admin@example.com',
-            'password' => bcrypt('D123d456!'),
+            'password' => Hash::make('D123d456!'),
         ]);
 
-        $role=Role::create(['name' => 'admin']);
+        $role=Role::firstOrCreate(['name' => 'admin']);
         $user->assignRole($role);
         if (DB::table('alarm_types')->count() === 0) {
             $this->call(AlarmTypeSeeder::class);
