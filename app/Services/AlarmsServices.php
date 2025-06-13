@@ -7,12 +7,12 @@ use App\Models\Device;
 use App\Models\AlarmType;
 use App\Models\TargetType;
 use App\Models\VehicleInventory;
-use App\Models\AVD;
+use App\Models\Avd;
 use App\Models\General;
 use App\Models\ObjectCounting;
-use App\Models\VFD;
+use App\Models\Vfd;
 use App\Models\Vehicle;
-use App\Models\VSD;
+use App\Models\Vsd;
 use App\Models\VsdPerson;
 use App\Models\VsdCar;
 
