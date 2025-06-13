@@ -25,7 +25,7 @@ class VehicleSeeder extends Seeder
                     'alarm_id'     => $alarm->id,
                     'plate_number' => 'ABC-' . rand(100, 999),
                     'id_car'       => Str::uuid(),
-                    'car_color'    => fake()->safeColorName(),
+                    'car_color'    => ['red', 'blue', 'green', 'silver', 'black', 'white'][rand(0, 5)],
                     'image'        => 'vehicle_' . $alarm->id . '.jpg',
                     'plate_image'  => 'plate_' . $alarm->id . '.jpg',
                 ]);
