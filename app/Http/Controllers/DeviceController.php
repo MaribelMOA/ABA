@@ -178,8 +178,10 @@ class DeviceController extends Controller
             ], 401);
         }
 
-        $devices = Device::where('account_id', $apiKeyRecord->account_id)->get();
-
+        //$devices = Device::where('account_id', $apiKeyRecord->account_id)->get();
+        $devices = Device::with('alarmType')
+            ->where('account_id', $apiKeyRecord->account_id)
+            ->get();
         return response()->json([
             'account_id' => $apiKeyRecord->account_id,
             'devices' => $devices
