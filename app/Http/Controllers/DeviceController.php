@@ -161,8 +161,8 @@ class DeviceController extends Controller
 
     public function getDevicesByApiKey(Request $request)
     {
-        $apiKey = $request->header('api_key');
-        $clientSecret = $request->header('client_secret');
+        $apiKey = $request->header('api-key');
+        $clientSecret = $request->header('client-secret');
 
         if (!$apiKey || !$clientSecret) {
             return response()->json([
@@ -188,8 +188,8 @@ class DeviceController extends Controller
 
     public function getDeviceAlarms(Request $request, $device_id)
     {
-        $apiKey = $request->header('api_key');
-        $clientSecret = $request->header('client_secret');
+        $apiKey = $request->header('api-key');
+        $clientSecret = $request->header('client-secret');
 
         if (!$apiKey || !$clientSecret) {
             return response()->json([
@@ -227,8 +227,8 @@ class DeviceController extends Controller
 
     public function getDeviceAlarmByType(Request $request, $device_id, $alarm_type)
     {
-        $apiKey = $request->header('api_key');
-        $clientSecret = $request->header('client_secret');
+        $apiKey = $request->header('api-key');
+        $clientSecret = $request->header('client-secret');
 
         if (!$apiKey || !$clientSecret) {
             return response()->json([
@@ -276,8 +276,8 @@ class DeviceController extends Controller
     {
         $data = $request->validated();
 
-        $apiKey = $request->header('api_key');
-        $clientSecret = $request->header('client_secret');
+        $apiKey = $request->header('api-key');
+        $clientSecret = $request->header('client-secret');
 
         if (!$apiKey || !$clientSecret) {
             return response()->json([
@@ -285,8 +285,8 @@ class DeviceController extends Controller
             ], 400);
         }
 
-        $data['api_key'] = $request->header('api_key');//$request->api_key;
-        $data['client_secret'] = $request->header('client_secret');//$request->client_secret;
+        $data['api_key'] = $request->header('api-key');//$request->api_key;
+        $data['client-secret'] = $request->header('client-secret');//$request->client_secret;
 
         $response = DevicesServices::getRelatedRecords($data);
         return response()->json($response);

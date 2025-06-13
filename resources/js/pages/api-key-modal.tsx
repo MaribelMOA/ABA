@@ -55,7 +55,7 @@ export default function ApiKeyModal({ data, isOpen, onClose }: ApiKeyModalProps)
             toast({
                 title: "Error",
                 description: "No se pudo copiar al portapapeles",
-                variant: "destructive",
+                //variant: "destructive",
             })
         }
     }

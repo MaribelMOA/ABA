@@ -104,8 +104,8 @@ class ObjectCountingController extends Controller
 
     public function getLastObjectStateFilteredWithAuth(Request $request)
     {
-        $apiKey = $request->header('api_key');
-        $clientSecret = $request->header('client_secret');
+        $apiKey = $request->header('api-key');
+        $clientSecret = $request->header('client-secret');
 
         if (!$apiKey || !$clientSecret) {
             return response()->json([

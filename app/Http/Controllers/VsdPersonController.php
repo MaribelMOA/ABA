@@ -54,8 +54,8 @@ class VsdPersonController extends Controller
     public function getVsdPeopleStatsByDate(Request $request)
     {
         // 1. Validar headers de autenticación
-        $apiKey = $request->header('api_key');
-        $clientSecret = $request->header('client_secret');
+        $apiKey = $request->header('api-key');
+        $clientSecret = $request->header('client-secret');
 
         if (!$apiKey || !$clientSecret) {
             return response()->json([

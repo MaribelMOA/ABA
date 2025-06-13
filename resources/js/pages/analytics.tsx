@@ -48,8 +48,8 @@ const breadcrumbs: BreadcrumbItem[] = [
 ]
 
 const API_CREDENTIALS = {
-    api_key: "iGZY231oNBgS7VM7Dx8SIn3GFTiFzFlx",
-    client_secret: "vsicwSEKpgDWkq16AFXVvHBC6GnspR99aHt3GKTh0l3Ou7nGiJHNjhQqhqwBfg8N",
+    api_key: "enCJreWqZ8hBLjn7K9rkJVVUQ6lY4UdP",
+    client_secret: "k4Q0DlGj8NvCmGKpAthpeUCjtLTDwLOGurrZuri5tXH5mvpXK1x9IcfgDeraYYcz",
 }
 
 export default function PeopleAnalytics() {
