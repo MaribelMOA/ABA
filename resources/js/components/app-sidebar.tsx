@@ -29,22 +29,22 @@ const mainNavItems: NavItem[] = [
         href: '/users',
         icon: LayoutGrid,
     },
-    {
-        title: 'Vehicles',
-        href: '/vehicles',
-        icon: LayoutGrid,
-    },
-
-    {
-        title: 'Money Express',
-        href: '/moneyExpress',
-        icon: LayoutGrid,
-    },
-    {
-        title: 'People Analytics',
-        href: '/analytics',
-        icon: LayoutGrid,
-    },
+    // {
+    //     title: 'Vehicles',
+    //     href: '/vehicles',
+    //     icon: LayoutGrid,
+    // },
+    //
+    // {
+    //     title: 'Money Express',
+    //     href: '/moneyExpress',
+    //     icon: LayoutGrid,
+    // },
+    // {
+    //     title: 'People Analytics',
+    //     href: '/analytics',
+    //     icon: LayoutGrid,
+    // },
 
 ];
 
