@@ -326,7 +326,7 @@ class DevicesServices
         $device = Device::findOrFail($id);
         $device->device_enabled = !$device->device_enabled;
         $device->save();
-        return $device;
+        return Device::with('alarmType')->find($device->id);
     }
 
     public static function toggleImageSave($id)
@@ -334,7 +334,7 @@ class DevicesServices
         $device = Device::findOrFail($id);
         $device->image_save_enabled = !$device->image_save_enabled;
         $device->save();
-        return $device;
+        return Device::with('alarmType')->find($device->id);
     }
 
 

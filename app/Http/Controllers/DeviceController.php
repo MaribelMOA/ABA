@@ -314,7 +314,7 @@ class DeviceController extends Controller
         }
         try {
             $device = DevicesServices::toggleEnable($id);
-            $device->load('alarmType');
+
             return response()->json([
                 'message' => 'Estado del dispositivo actualizado',
                 'device' => $device,
@@ -342,7 +342,7 @@ class DeviceController extends Controller
         }
         try {
             $device = DevicesServices::toggleImageSave($id);
-            $device->load('alarmType');
+
             return response()->json([
                 'message' => 'Estado de guardado de imagen actualizado',
                 'device' => $device,
