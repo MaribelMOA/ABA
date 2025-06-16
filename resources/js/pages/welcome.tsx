@@ -30,7 +30,7 @@ export default function Welcome() {
 
     return (
         <>
-            <Head title="MyAlarmGate - Gestión de Eventos para Cámaras Provision ISR">
+            <Head title="AlarmBridge API - Gestión de Eventos para Cámaras Provision ISR">
                 <link rel="preconnect" href="https://fonts.bunny.net" />
                 <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700" rel="stylesheet" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -47,7 +47,7 @@ export default function Welcome() {
                                     <Bell className="h-6 w-6 text-white" />
                                 </div>
                                 <div>
-                                    <h1 className="text-xl font-bold text-gray-900">MyAlarmGate</h1>
+                                    <h1 className="text-xl font-bold text-gray-900">AlarmBridge API</h1>
                                     <p className="text-xs text-gray-600">Gestión de Eventos para Cámaras</p>
                                 </div>
                             </div>
@@ -256,11 +256,11 @@ export default function Welcome() {
                     </div>
                 </section>
 
-                {/* What is AlarmGate Section */}
+                {/* What is AlarmBridge API Section */}
                 <section id="que-es" className="py-16 bg-white">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="text-center space-y-4 mb-12">
-                            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">¿Qué es MyAlarmGate?</h2>
+                            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">¿Qué es AlarmBridge API?</h2>
                             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                                 Una solución tecnológica que integra y gestiona eventos de cámaras de videovigilancia Provision ISR
                             </p>
@@ -310,7 +310,7 @@ export default function Welcome() {
 
                             <div className="space-y-6">
                                 <p className="text-gray-600 text-lg">
-                                    MyAlarmGate es una solución tecnológica de integración y gestión de eventos de cámaras de
+                                    AlarmBridge API es una solución tecnológica de integración y gestión de eventos de cámaras de
                                     videovigilancia Provision ISR, que permite centralizar la información capturada por las cámaras y
                                     ponerla a disposición del cliente a través de una API segura y lista para usar.
                                 </p>
@@ -334,7 +334,7 @@ export default function Welcome() {
                 <section id="solucion" className="py-16 bg-gray-50">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="text-center space-y-4 mb-12">
-                            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">¿Qué Soluciona MyAlarmGate?</h2>
+                            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">¿Qué Soluciona AlarmBridge API?</h2>
                             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                                 Una plataforma completa para aprovechar al máximo los eventos de tus cámaras
                             </p>
@@ -426,7 +426,7 @@ export default function Welcome() {
                                                 <Bell className="h-6 w-6" />
                                             </div>
                                             <h4 className="font-medium text-gray-900 mb-2">Envío de Eventos</h4>
-                                            <p className="text-sm text-gray-600">La cámara envía los eventos a MyAlarmGate</p>
+                                            <p className="text-sm text-gray-600">La cámara envía los eventos a AlarmBridge API</p>
                                         </div>
 
                                         <div className="flex flex-col items-center text-center">
@@ -465,7 +465,7 @@ export default function Welcome() {
                                         </div>
                                         <div>
                                             <h4 className="font-medium text-gray-900">Envío de Eventos</h4>
-                                            <p className="text-sm text-gray-600">La cámara envía los eventos a MyAlarmGate</p>
+                                            <p className="text-sm text-gray-600">La cámara envía los eventos a AlarmBridge API</p>
                                         </div>
                                     </div>
 
@@ -500,7 +500,7 @@ export default function Welcome() {
                         <div className="text-center space-y-4 mb-12">
                             <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Casos de Uso</h2>
                             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                                Descubre cómo MyAlarmGate puede transformar la seguridad y gestión de tu negocio
+                                Descubre cómo AlarmBridge API puede transformar la seguridad y gestión de tu negocio
                             </p>
                         </div>
 
@@ -1357,7 +1357,123 @@ Headers:
                                 </div>
 
 
+                                {/* Route 8 */}
+                                <div className="p-6">
+                                    <div className="flex items-start justify-between">
+                                        <div className="space-y-1">
+                                            <div className="flex items-center space-x-2">
+        <span className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">
+          GET
+        </span>
+                                                <h4 className="font-mono text-sm md:text-base font-medium text-gray-900">
+                                                    /api/vehicles/latest
+                                                </h4>
+                                            </div>
+                                            <p className="text-gray-600 text-sm">
+                                                Obtiene los últimos vehículos registrados, con sus alarmas y dispositivos relacionados. Requiere autenticación mediante encabezados.
+                                            </p>
+                                        </div>
+                                    </div>
 
+                                    {/* Request Example */}
+                                    <div className="mt-4 bg-gray-50 rounded-md p-4 space-y-4">
+                                        <div>
+                                            <p className="text-xs font-medium text-gray-500 mb-1">Request completo:</p>
+                                            <pre className="bg-gray-800 text-gray-200 p-3 rounded-md text-xs overflow-x-auto">
+{`GET /api/vehicles/latest?limit=3&device_id=10
+Headers:
+  api-key: tu_api_key
+  client-secret: tu_client_secret`}
+      </pre>
+                                        </div>
+
+                                        <div>
+                                            <p className="text-xs font-medium text-gray-500 mb-1">Parámetros de consulta:</p>
+                                            <ul className="text-xs text-gray-700 list-disc list-inside">
+                                                <li><strong>limit</strong> (entero, opcional) – Número máximo de vehículos a retornar (máx. 100, por defecto 3)</li>
+                                                <li><strong>device_id</strong> (entero, opcional) – ID del dispositivo del que se desea filtrar los vehículos</li>
+                                            </ul>
+                                        </div>
+
+                                        <div>
+                                            <p className="text-xs font-medium text-gray-500 mb-1">Parámetros de encabezado:</p>
+                                            <ul className="text-xs text-gray-700 list-disc list-inside">
+                                                <li><strong>api-key</strong> (string, requerido) – Tu clave de API única</li>
+                                                <li><strong>client-secret</strong> (string, requerido) – Secreto asociado a la clave</li>
+                                            </ul>
+                                        </div>
+
+                                        <div>
+                                            <p className="text-xs font-medium text-gray-500 mb-1">Ejemplo de respuesta:</p>
+                                            <pre className="bg-gray-800 text-green-200 p-3 rounded-md text-xs overflow-x-auto">
+{`[
+  {
+    "id": 10,
+    "alarm_id": 100,
+    "plate_number": "ABC-322",
+    "id_car": "2f5b17b4-1b31-4fad-a626-3023bd5b05cc",
+    "car_color": "silver",
+    "image": "https://.../vsd_1253.jpg",
+    "plate_image": "https://.../vsd_1253.jpg",
+    "created_at": "2025-06-13T18:03:25.000000Z",
+    "updated_at": "2025-06-13T18:03:25.000000Z",
+    "alarm": {
+      "id": 100,
+      "device_id": 10,
+      "alarm_type_id": 10,
+      "utc": 1749819050,
+      "created_at": "2025-06-13T16:58:50.000000Z",
+      "updated_at": "2025-06-13T16:58:50.000000Z",
+      "device": {
+        "id": 10,
+        "account_id": 1,
+        "mac": "AA:BB:CC:0A:05:37",
+        "device_name": "Device for VEHICE",
+        "sn": "SN-VBE8ZA",
+        "alarm_type_id": 10,
+        "image_save_enabled": true,
+        "device_enabled": true,
+        "created_at": "2025-06-13T16:58:49.000000Z",
+        "updated_at": "2025-06-13T20:29:38.000000Z"
+      }
+    }
+  },
+  ...
+]`}
+      </pre>
+                                        </div>
+
+                                        <div>
+                                            <p className="text-xs font-medium text-gray-500 mb-1">Ejemplo de error (credenciales faltantes):</p>
+                                            <pre className="bg-gray-800 text-red-200 p-3 rounded-md text-xs overflow-x-auto">
+{`{
+  "message": "API Key o Client Secret no proporcionados en los encabezados."
+}`}
+      </pre>
+                                        </div>
+
+                                        <div>
+                                            <p className="text-xs font-medium text-gray-500 mb-1">Ejemplo de error (credenciales inválidas):</p>
+                                            <pre className="bg-gray-800 text-red-200 p-3 rounded-md text-xs overflow-x-auto">
+{`{
+  "message": "API Key o Client Secret inválidos o inactivos."
+}`}
+      </pre>
+                                        </div>
+
+                                        <div>
+                                            <p className="text-xs font-medium text-gray-500 mb-1">Ejemplo de error (validación):</p>
+                                            <pre className="bg-gray-800 text-red-200 p-3 rounded-md text-xs overflow-x-auto">
+{`{
+  "message": "El campo limit debe ser un número entre 1 y 100.",
+  "errors": {
+    "limit": ["El campo limit debe ser un número entre 1 y 100."]
+  }
+}`}
+      </pre>
+                                        </div>
+                                    </div>
+                                </div>
 
 
                             </div>
@@ -1379,7 +1495,7 @@ Headers:
                             ¿Listo para aprovechar al máximo tus cámaras Provision ISR?
                         </h2>
                         <p className="text-lg text-red-100 mb-8">
-                            Únete a empresas que ya confían en MyAlarmGate para gestionar sus eventos de videovigilancia
+                            Únete a empresas que ya confían en AlarmBridge API para gestionar sus eventos de videovigilancia
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             {!auth.user && (
@@ -1412,7 +1528,7 @@ Headers:
                                         <Bell className="h-5 w-5 text-white" />
                                     </div>
                                     <div>
-                                        <h3 className="text-lg font-bold">MyAlarmGate</h3>
+                                        <h3 className="text-lg font-bold">AlarmBridge API</h3>
                                         <p className="text-gray-400 text-xs">Gestión de Eventos para Cámaras</p>
                                     </div>
                                 </div>
@@ -1463,7 +1579,7 @@ Headers:
                             </div>
                         </div>
                         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
-                            <p>&copy; 2024 MyAlarmGate. Todos los derechos reservados.</p>
+                            <p>&copy; 2024 AlarmBridge API. Todos los derechos reservados.</p>
                         </div>
                     </div>
                 </footer>
