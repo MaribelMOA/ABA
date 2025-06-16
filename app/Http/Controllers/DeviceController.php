@@ -296,8 +296,22 @@ class DeviceController extends Controller
         return response()->json($response);
     }
 
-    public function toggleEnable($id)
+    public function toggleEnable(Request $request, $id)
     {
+        $apiKey = $request->header('api-key');
+        $clientSecret = $request->header('client-secret');
+
+        if (!$apiKey || !$clientSecret) {
+            return response()->json([
+                'message' => 'API Key o Client Secret no proporcionados en los encabezados.'
+            ], 400);
+        }
+
+        $validation = DevicesServices::validateDeviceOwnership($apiKey, $clientSecret, $id);
+
+        if ($validation['status'] !== 200) {
+            return $validation['response'];
+        }
         try {
             $device = DevicesServices::toggleEnable($id);
             return response()->json([
@@ -309,8 +323,22 @@ class DeviceController extends Controller
         }
     }
 
-    public function toggleImageSave($id)
+    public function toggleImageSave(Request $request, $id)
     {
+        $apiKey = $request->header('api-key');
+        $clientSecret = $request->header('client-secret');
+
+        if (!$apiKey || !$clientSecret) {
+            return response()->json([
+                'message' => 'API Key o Client Secret no proporcionados en los encabezados.'
+            ], 400);
+        }
+
+        $validation = DevicesServices::validateDeviceOwnership($apiKey, $clientSecret, $id);
+
+        if ($validation['status'] !== 200) {
+            return $validation['response'];
+        }
         try {
             $device = DevicesServices::toggleImageSave($id);
             return response()->json([
