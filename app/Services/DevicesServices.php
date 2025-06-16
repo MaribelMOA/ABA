@@ -321,4 +321,21 @@ class DevicesServices
         return $device;
     }
 
+    public static function toggleEnable($id)
+    {
+        $device = Device::findOrFail($id);
+        $device->device_enabled = !$device->device_enabled;
+        $device->save();
+        return $device;
+    }
+
+    public static function toggleImageSave($id)
+    {
+        $device = Device::findOrFail($id);
+        $device->image_save_enabled = !$device->image_save_enabled;
+        $device->save();
+        return $device;
+    }
+
+
 }

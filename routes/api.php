@@ -38,7 +38,8 @@ Route::get('/devices/{device_id}/alarms/{alarm_type}', [DeviceController::class,
 
 Route::post('/devices/related-records', [DeviceController::class, 'getRelatedRecords']);
 
-
+Route::post('/{id}/toggle-enable', [DeviceController::class, 'toggleEnable']);
+Route::post('/{id}/toggle-image-save', [DeviceController::class, 'toggleImageSave']);
 //////////////////////////////////
 
 //CON FILTROS

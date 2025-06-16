@@ -14,6 +14,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Inertia\Inertia;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 class DeviceController extends Controller
 {
 
@@ -292,6 +294,32 @@ class DeviceController extends Controller
 
         $response = DevicesServices::getRelatedRecords($data);
         return response()->json($response);
+    }
+
+    public function toggleEnable($id)
+    {
+        try {
+            $device = DevicesServices::toggleEnable($id);
+            return response()->json([
+                'message' => 'Estado del dispositivo actualizado',
+                'device' => $device,
+            ]);
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['message' => 'Dispositivo no encontrado'], 404);
+        }
+    }
+
+    public function toggleImageSave($id)
+    {
+        try {
+            $device = DevicesServices::toggleImageSave($id);
+            return response()->json([
+                'message' => 'Estado de guardado de imagen actualizado',
+                'device' => $device,
+            ]);
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['message' => 'Dispositivo no encontrado'], 404);
+        }
     }
 
 
