@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreVehicleRequest;
 use App\Http\Requests\UpdateVehicleRequest;
 use App\Models\Vehicle;
+use App\Services\DevicesServices;
+use Illuminate\Http\Request;
 
 class VehicleController extends Controller
 {
@@ -51,4 +53,62 @@ class VehicleController extends Controller
             'message' => 'Vehicle deleted successfully'
         ]);
     }
+
+
+
+    public function getLatestVehiclesFilteredWithAuth(Request $request)
+    {
+        $apiKey = $request->header('api-key');
+        $clientSecret = $request->header('client-secret');
+
+        if (!$apiKey || !$clientSecret) {
+            return response()->json([
+                'message' => 'API Key o Client Secret no proporcionados en los encabezados.'
+            ], 400);
+        }
+
+        // Validar los datos
+        $validated = $request->validate([
+            'device_id' => 'nullable|integer',
+            'limit'     => 'nullable|integer|min:1|max:100'
+        ]);
+
+        // Autenticar
+        $authResult = DevicesServices::authenticateApiKey($apiKey, $clientSecret);
+        if (!$authResult) {
+            return response()->json([
+                'message' => 'API Key o Client Secret inválidos o inactivos.'
+            ], 401);
+        }
+
+        // Validar ownership si se proporciona device_id
+        if (!empty($validated['device_id'])) {
+            $ownership = DevicesServices::validateDeviceOwnership(
+                $apiKey,
+                $clientSecret,
+                $validated['device_id']
+            );
+
+            if ($ownership['status'] !== 200) {
+                return $ownership['response'];
+            }
+        }
+
+        // Definir límite
+        $limit = $validated['limit'] ?? 5;
+
+        // Construir la consulta
+        $query = Vehicle::query();
+
+        if (!empty($validated['device_id'])) {
+            $query->where('device_id', $validated['device_id']);
+        }
+
+        $vehicles = $query->orderBy('id', 'desc')
+            ->take($limit)
+            ->get();
+
+        return response()->json($vehicles);
+    }
+
 }

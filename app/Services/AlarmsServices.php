@@ -165,9 +165,20 @@ class AlarmsServices
                 return; // Termina aquí para no ejecutar la siguiente lógica
             }
 
+            // Obtener el device_id asociado al general
+            $deviceId = General::where('id', $id_general)
+                ->with('alarm.device')
+                ->first()
+                ?->alarm
+                ?->device_id;
+
+            // Buscar el último registro relacionado con ese device_id
             $lastRecord = ObjectCounting::where('object_type', $object_type)
                 ->where('object_state', $object_state)
                 ->where('alarm_type_id', $id_alarm_type)
+                ->whereHas('general.alarm', function ($query) use ($deviceId) {
+                    $query->where('device_id', $deviceId);
+                })
                 ->orderByDesc('id')
                 ->first();
 

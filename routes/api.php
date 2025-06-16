@@ -48,6 +48,8 @@ Route::post('/object-counting/latest-auth', [ObjectCountingController::class, 'g
 /////
 /// REGRESAR TODOS LOS TIPOS DE ALARMAS
 Route::get('/alarm-types/auth', [AlarmTypeController::class, 'getAlarmTypesWithAuth']);
+//
+Route::get('/vehicles/latest', [VehicleController::class, 'getLatestVehiclesFilteredWithAuth']);
 
 ///////
 /// VSD People caracteristicas
