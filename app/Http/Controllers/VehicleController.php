@@ -95,13 +95,15 @@ class VehicleController extends Controller
         }
 
         // Definir límite
-        $limit = $validated['limit'] ?? 5;
+        $limit = $validated['limit'] ?? 3;
 
-        // Construir la consulta
-        $query = Vehicle::query();
+        // Construir la consulta usando relaciones
+        $query = Vehicle::with(['alarm.device']);
 
         if (!empty($validated['device_id'])) {
-            $query->where('device_id', $validated['device_id']);
+            $query->whereHas('alarm.device', function ($q) use ($validated) {
+                $q->where('id', $validated['device_id']);
+            });
         }
 
         $vehicles = $query->orderBy('id', 'desc')
