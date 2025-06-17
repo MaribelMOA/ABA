@@ -148,22 +148,24 @@ class AlarmsServices
 
     public static function processObjectType($id_general, $id_alarm_type, $object_type, $object_state, $count)
     {
-        $objectCountingModel = new ObjectCounting();
 
-        // Si el estado es "exists", se guarda sin comparar con el anterior
-        if ($object_state === 'exist') {
-            $objectCounting = $objectCountingModel->create([
-                'general_id'    => $id_general,
-                'alarm_type_id' => $id_alarm_type,
-                'object_type'   => $object_type,
-                'object_state'  => $object_state,
-                'count'         => $count,
-            ]);
-
-            $fullInfo = $objectCounting->load('general');
-            return; // Termina aquí para no ejecutar la siguiente lógica
-        }
         if ($count != 0) {
+
+            $objectCountingModel = new ObjectCounting();
+
+            // Si el estado es "exists", se guarda sin comparar con el anterior
+            if ($object_state === 'exist') {
+                $objectCounting = $objectCountingModel->create([
+                    'general_id'    => $id_general,
+                    'alarm_type_id' => $id_alarm_type,
+                    'object_type'   => $object_type,
+                    'object_state'  => $object_state,
+                    'count'         => $count,
+                ]);
+
+                $fullInfo = $objectCounting->load('general');
+                return; // Termina aquí para no ejecutar la siguiente lógica
+            }
             // Obtener el device_id asociado al general
             $deviceId = General::where('id', $id_general)
                 ->with('alarm.device')
